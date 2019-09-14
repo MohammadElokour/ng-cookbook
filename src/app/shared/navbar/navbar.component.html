@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+    <span id="title" routerLink="/recipe">TheCookbook.com</span>
+    <span class="spacer"></span>
+    <div *ngIf="auth.afAuth.authState | async as user; else showLogin">
+      <button mat-raised-button color="accent" routerLink="/dashboard">Add a Recipe</button>      
+      <button mat-button (click)="auth.logout()">Logout</button>
+    </div>
+    <ng-template #showLogin>
+      <button mat-button (click)="auth.login()">Login With Google</button>
+    </ng-template>
+  </mat-toolbar-row>
+</mat-toolbar>

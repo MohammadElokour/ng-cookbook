@@ -1,0 +1,12 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$ngCookbook-app-primary: mat-palette($mat-blue-grey, 900);
+$ngCookbook-app-accent: mat-palette($mat-blue, A200);
+
+$ngCookbook-app-warn: mat-palette($mat-red);
+
+$ngCookbook-app-theme: mat-light-theme($ngCookbook-app-primary, $ngCookbook-app-accent, $ngCookbook-app-warn);
+
+@include angular-material-theme($ngCookbook-app-theme);

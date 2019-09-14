@@ -1,0 +1,22 @@
+<!-- <div id="search">
+  <mat-form-field appearance="outline">
+    <input type="search" matInput placeholder="Search"/>
+  </mat-form-field>
+  <button mat-icon-button (click)="search()">
+    <mat-icon>search</mat-icon>
+  </button>
+</div> -->
+<section>
+  <mat-card *ngFor="let recipe of recipes | async">
+    <mat-card-content  routerLink="{{recipe.id}}">
+      <img src="{{recipe.image}}" alt="{{recipe.title}}">
+      <h2>{{recipe.title}}</h2>
+      <p><small>Posted by {{recipe.author}} &bull; on {{recipe.published.toDate() | date: 'fullDate' }} </small></p>
+    </mat-card-content>
+    <mat-card-actions align="end" *ngIf="auth.currentUserId === recipe.authorId"> 
+      <button mat-icon-button (click)="delete(recipe.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</section>

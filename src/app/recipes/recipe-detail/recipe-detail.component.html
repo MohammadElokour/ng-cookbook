@@ -1,0 +1,48 @@
+<ng-container *ngIf="recipe">
+  <div [hidden]="!editing">
+    <mat-card>
+        <h2>Update post</h2>
+        <mat-form-field>
+          <input matNativeControl placeholder="Title" [(ngModel)]="recipe.title">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <textarea matNativeControl placeholder="Description" [(ngModel)]="recipe.description"></textarea>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <textarea matNativeControl placeholder="Ingredients" [(ngModel)]="recipe.ingredients" rows="7"></textarea>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <textarea matNativeControl placeholder="Steps" [(ngModel)]="recipe.steps" rows="7"></textarea>
+        </mat-form-field>
+        <br>
+        <button mat-raised-button color="accent" (click)="updateRecipe()">Save</button>
+        <button mat-button (click)="editing=false">Cancel</button>
+    </mat-card>
+    </div>
+  
+  <div [hidden]="editing">
+    <mat-card>
+      <img src="{{recipe.image}}" alt="{{recipe.title}}">
+      <p>posted by {{recipe.author}} &bull; {{recipe.published.toDate() | date:'fullDate'}}</p>
+      <mat-card-content>
+        <h2>{{recipe.title}}</h2>
+        <h4>{{recipe.description}}</h4><br>
+        <h2>Ingredients</h2>
+        <p>{{recipe.ingredients}}</p><br>
+        <h2>Steps</h2>
+        <p>{{recipe.steps}}</p>
+      </mat-card-content>
+      <mat-card-actions align="end" *ngIf="auth.currentUserId === recipe.authorId">
+        <button mat-icon-button (click)="editing=true">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="delete()">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</ng-container>

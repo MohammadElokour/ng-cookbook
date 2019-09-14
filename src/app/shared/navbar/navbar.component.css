@@ -1,0 +1,12 @@
+.spacer {
+	flex: 1 1 auto;
+}
+
+#title:focus {
+	outline: none;
+	border: 0;
+}
+
+#title {
+	cursor: pointer;
+}
